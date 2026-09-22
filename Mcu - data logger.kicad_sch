@@ -5028,6 +5028,52 @@
 			)
 		)
 	)
+	(sheet
+		(at 119.38 148.59)
+		(size 41.91 30.48)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "e2044a34-a7d5-4b45-a7a1-645a9c1a24fe")
+		(property "Sheetname" "Connectors"
+			(at 119.38 147.8784 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Connectors.kicad_sch"
+			(at 119.38 179.6546 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "Mcu - data logger"
+				(path "/33dac713-6b0b-4078-a50e-6224d6a6b582"
+					(page "2")
+				)
+			)
+		)
+	)
 	(sheet_instances
 		(path "/"
 			(page "1")
