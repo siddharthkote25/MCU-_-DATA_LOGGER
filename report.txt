@@ -1,1 +1,1 @@
-Annotation complete.
+Change symbol U4 from 'ATMEGA328-AU:ATMEGA328P-AU' to 'ATMEGA328P-AU:ATMEGA328P-AU': OK

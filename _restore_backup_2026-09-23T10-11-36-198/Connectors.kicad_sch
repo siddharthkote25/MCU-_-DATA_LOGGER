@@ -1450,7 +1450,7 @@
 				)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x04, script generated"
+		(property "Description" "I2C"
 			(at 96.52 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -1547,7 +1547,7 @@
 				)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x04, script generated"
+		(property "Description" "I2C"
 			(at 116.84 81.28 0)
 			(hide yes)
 			(show_name no)
