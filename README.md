@@ -137,21 +137,6 @@ ESP32
 
 ---
 
-## 📂 Repository Contents
-
-```text
-MCU-Data-Logger/
-│
-├── KiCad Schematic
-├── PCB Layout
-├── Custom Footprints
-├── Custom Symbols
-├── Project Files
-└── README.md
-```
-
----
-
 
 ## 🎯 Skills Demonstrated
 
