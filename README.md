@@ -4,9 +4,9 @@
 
 **MCU Data Logger** is an electronics hardware project designed to collect, store, and manage data using a microcontroller-based system.
 
-The design integrates **ESP32, external EEPROM, GPS, 4G LTE communication, and regulated power circuitry** into a single hardware platform.
+The design integrates an **ESP32, external EEPROM, GPS, 4G LTE module, and regulated power circuitry**.
 
-This repository contains the **KiCad 9 schematic and PCB design files** for the project.
+This repository contains the **KiCad 9 schematic and PCB design files** developed for the project.
 
 ---
 
@@ -15,8 +15,8 @@ This repository contains the **KiCad 9 schematic and PCB design files** for the 
 | Component                   | Purpose                                |
 | --------------------------- | -------------------------------------- |
 | **ESP32 Development Board** | Main microcontroller                   |
-| **24LC1025 EEPROM**         | External non-volatile data storage     |
-| **NEO-6M GPS**              | Location / GPS data                    |
+| **24LC1025 EEPROM**         | Non-volatile data storage              |
+| **NEO-6M GPS**              | GPS data                               |
 | **A7670C 4G LTE Module**    | Cellular communication                 |
 | **HT7333**                  | 3.3V voltage regulation                |
 | **Resistors & Capacitors**  | Supporting and filtering components    |
@@ -26,19 +26,26 @@ This repository contains the **KiCad 9 schematic and PCB design files** for the 
 
 ## 📐 Schematic Design
 
-The complete circuit schematic was designed in **KiCad 9**, integrating the MCU, memory, communication modules, and power circuitry.
+The circuit was designed in **KiCad 9** and divided into schematic sheets to organize the different parts of the hardware.
+
+### Schematic — Sheet 1
+
+![MCU Data Logger Schematic Sheet 1](./Mcu%20sheet%201.png)
+
+### Schematic — Sheet 2
+
+![MCU Data Logger Schematic Sheet 2](./YOUR_SECOND_SCHEMATIC_FILENAME.png)
 
 ### Key Design Work
 
-* Schematic capture
-* Component selection
-* Symbol management
+* Schematic capture and circuit connectivity
+* Component and symbol management
 * Footprint assignment
 * Net labeling
 * Power and ground connections
 * UART communication
 * I²C communication with EEPROM
-* 3.3V regulated power supply
+* 3.3V power regulation
 * ERC checking and troubleshooting
 
 ---
@@ -86,13 +93,19 @@ Gerber Generation
 ## 🔌 Main Interfaces
 
 ```text
-ESP32
- │
- ├── I²C ──────→ 24LC1025 EEPROM
- │
- ├── UART ─────→ NEO-6M GPS
- │
- └── UART ─────→ A7670C 4G LTE
+                         ┌──────────────────┐
+                         │      ESP32       │
+                         │ Main Controller  │
+                         └────────┬─────────┘
+                                  │
+              ┌───────────────────┼───────────────────┐
+              │                   │                   │
+             I²C                 UART                UART
+              │                   │                   │
+       ┌──────▼──────┐     ┌──────▼──────┐     ┌─────▼──────┐
+       │  24LC1025   │     │   NEO-6M    │     │  A7670C    │
+       │   EEPROM    │     │     GPS     │     │   4G LTE   │
+       └─────────────┘     └─────────────┘     └────────────┘
 ```
 
 ### Communication
@@ -110,33 +123,21 @@ ESP32
 
 **KiCad 9**
 
-* Schematic Capture
-* PCB Layout
-* Footprint Management
-* Component Placement
-* Routing
-* Net Classes
-* Design Rules
-* ERC / DRC
+`Schematic Capture` • `PCB Layout` • `Footprint Management`
+`Component Placement` • `Routing` • `Net Classes`
+`Design Rules` • `ERC` • `DRC`
 
 ### Electronics
 
-* ESP32
-* EEPROM
-* GPS
-* 4G LTE
-* Voltage Regulation
-* UART
-* I²C
-* Power & Signal Routing
+`ESP32` • `EEPROM` • `GPS` • `4G LTE`
+`UART` • `I²C` • `Voltage Regulation`
+`Power & Signal Routing`
 
 ### Version Control
 
-* Git
-* GitHub
+`Git` • `GitHub`
 
 ---
-
 
 ## 🎯 Skills Demonstrated
 
@@ -153,3 +154,4 @@ ESP32
 Electronics & Communication Engineering Graduate
 
 Focused on **PCB Design, Electronics Hardware & KiCad Development**.
+
