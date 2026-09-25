@@ -26,7 +26,7 @@ This repository contains the **KiCad 9 schematic and PCB design files** develope
 
 ## 📐 Schematic Design
 
-The circuit was designed in **KiCad 9** and divided into schematic sheets to organize the different parts of the hardware.
+The circuit was designed in **KiCad 9** and organized into multiple schematic sheets to keep the design structured and easy to manage.
 
 ### Schematic — Sheet 1
 
@@ -34,19 +34,32 @@ The circuit was designed in **KiCad 9** and divided into schematic sheets to org
 
 ### Schematic — Sheet 2
 
-![MCU Data Logger Schematic Sheet 2](./YOUR_SECOND_SCHEMATIC_FILENAME.png)
+![MCU Data Logger Schematic Sheet 2](./Mcu%20sheet%202%20.png)
 
-### Key Design Work
+---
 
-* Schematic capture and circuit connectivity
-* Component and symbol management
-* Footprint assignment
-* Net labeling
-* Power and ground connections
-* UART communication
-* I²C communication with EEPROM
-* 3.3V power regulation
-* ERC checking and troubleshooting
+## 🔌 Main Interfaces
+
+```text
+                         ┌──────────────────┐
+                         │      ESP32       │
+                         │ Main Controller  │
+                         └────────┬─────────┘
+                                  │
+              ┌───────────────────┼───────────────────┐
+              │                   │                   │
+             I²C                 UART                UART
+              │                   │                   │
+       ┌──────▼──────┐     ┌──────▼──────┐     ┌─────▼──────┐
+       │  24LC1025   │     │   NEO-6M    │     │  A7670C    │
+       │   EEPROM    │     │     GPS     │     │   4G LTE   │
+       └─────────────┘     └─────────────┘     └────────────┘
+```
+
+* **I²C** — EEPROM communication
+* **UART** — GPS communication
+* **UART** — 4G LTE communication
+* **GPIO** — Control and status signals
 
 ---
 
@@ -90,33 +103,6 @@ Gerber Generation
 
 ---
 
-## 🔌 Main Interfaces
-
-```text
-                         ┌──────────────────┐
-                         │      ESP32       │
-                         │ Main Controller  │
-                         └────────┬─────────┘
-                                  │
-              ┌───────────────────┼───────────────────┐
-              │                   │                   │
-             I²C                 UART                UART
-              │                   │                   │
-       ┌──────▼──────┐     ┌──────▼──────┐     ┌─────▼──────┐
-       │  24LC1025   │     │   NEO-6M    │     │  A7670C    │
-       │   EEPROM    │     │     GPS     │     │   4G LTE   │
-       └─────────────┘     └─────────────┘     └────────────┘
-```
-
-### Communication
-
-* **I²C** — EEPROM communication
-* **UART** — GPS communication
-* **UART** — 4G LTE communication
-* **GPIO** — Control and status signals
-
----
-
 ## 🛠️ Tools & Technologies
 
 ### PCB Design
@@ -139,6 +125,7 @@ Gerber Generation
 
 ---
 
+
 ## 🎯 Skills Demonstrated
 
 `KiCad 9` `PCB Design` `Schematic Capture` `PCB Layout`
@@ -154,4 +141,5 @@ Gerber Generation
 Electronics & Communication Engineering Graduate
 
 Focused on **PCB Design, Electronics Hardware & KiCad Development**.
+
 
