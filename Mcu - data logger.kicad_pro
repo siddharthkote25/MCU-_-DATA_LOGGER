@@ -560,7 +560,7 @@
       "step": "",
       "vrml": ""
     },
-    "page_layout_descr_file": ""
+    "page_layout_descr_file": "Mcu datalogger layout design "
   },
   "schematic": {
     "annotate_start_num": 0,
@@ -692,7 +692,7 @@
         "uuid": "33dac713-6b0b-4078-a50e-6224d6a6b582"
       }
     ],
-    "used_designators": "#FLG1-3,J1-4,#PWR1-12,U5",
+    "used_designators": "J1-4,#FLG1-3,#PWR1-12,U5",
     "variants": []
   },
   "sheets": [
