@@ -1,0 +1,7 @@
+.history/
+
+# KiCad temporary files
+*.lck
+
+# KiCad restore backups
+_restore_backup_*/
