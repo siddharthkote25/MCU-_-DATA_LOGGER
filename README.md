@@ -78,11 +78,9 @@ Hierarchical design, split into functional blocks:
 - KiCad 10.0.6
 - Git / GitHub for version control
 
-## Author
+## My details
 
 **Siddharth Kote**
 siddharthkote129@gmail.com
-## Author
 
-[Your Name] — [LinkedIn / email]
 
