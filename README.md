@@ -1,145 +1,107 @@
-# MCU Data Logger — PCB Design
+# ATmega328P Data Logger
 
-### 📊 Microcontroller-Based Data Logging System
+A compact, battery-backed data logger board built around the ATmega328P-AU. It has a real-time clock for timestamping and 2 Mbit of external I²C EEPROM for storage, and it breaks out I²C, UART, GPIO and ICSP headers for sensors and programming. Designed end-to-end in **KiCad 10**.
 
-**MCU Data Logger** is an electronics hardware project designed to collect, store, and manage data using a microcontroller-based system.
+![3D view](3D%20view.png)
 
-The design integrates an **ESP32, external EEPROM, GPS, 4G LTE module, and regulated power circuitry**.
+## Features
 
-This repository contains the **KiCad 9 schematic and PCB design files** developed for the project.
+- **MCU:** ATmega328P-AU (TQFP-32) with a 16 MHz crystal and 22 pF load capacitors
+- **Real-time clock:** DS1337 with a 32.768 kHz crystal, battery backup, and pull-ups on its SQW/INTA outputs
+- **Storage:** 2 × 24LC1025 (1 Mbit each, 2 Mbit / 256 KB total) I²C EEPROMs, write-protect tied to GND
+- **I²C bus:** 4.7 kΩ pull-ups on SDA/SCK, shared by the RTC and both EEPROMs
+- **Indicators:** power LED and a status LED on SCK (D13)
+- **Programming:** standard 2×3 ICSP header, with a 10 kΩ pull-up on RESET
+- **Power:** battery input with decoupling on every IC, plus AREF filter capacitor
+- **Mechanical:** four mounting holes, one in each corner
 
----
+## Connectors
 
-## 🔧 Hardware
+| Ref | Interface | Pins |
+|-----|-----------|------|
+| J1 | I²C | GND, VCC, SDA, SCK |
+| J2 | GPIO | D2–D8, GND, VCC |
+| J3 | Serial / UART | GND, VCC, RX, TX |
+| J4 | ICSP | MISO, VCC, SCK, MOSI, RESET, GND |
+| Battery | Power input | VCC, GND |
 
-| Component                   | Purpose                                |
-| --------------------------- | -------------------------------------- |
-| **ESP32 Development Board** | Main microcontroller                   |
-| **24LC1025 EEPROM**         | Non-volatile data storage              |
-| **NEO-6M GPS**              | GPS data                               |
-| **A7670C 4G LTE Module**    | Cellular communication                 |
-| **HT7333**                  | 3.3V voltage regulation                |
-| **Resistors & Capacitors**  | Supporting and filtering components    |
-| **Connectors**              | External module and signal connections |
+## Schematic
 
----
+Hierarchical design, split into functional blocks:
 
-## 📐 Schematic Design
+- **MCU:** ATmega328P, crystal, reset circuit, LEDs, AREF filter
+- **Real time clock:** DS1337, 32.768 kHz crystal, pull-ups, decoupling
+- **EEPROM:** two 24LC1025 with address pins, write-protect and I²C pull-ups
+- **Connectors:** I²C, UART, GPIO and ICSP (separate sub-sheet)
+- **Mounting:** four mounting holes
 
-The circuit was designed in **KiCad 9** and organized into multiple schematic sheets to keep the design structured and easy to manage.
+**Sheet 1: MCU, RTC, EEPROM**
 
-### Schematic — Sheet 1
+![Schematic sheet 1](Mcu%20sheet%201.png)
 
-![MCU Data Logger Schematic Sheet 1](./Mcu%20sheet%201.png)
+**Sheet 2: Connectors**
 
-### Schematic — Sheet 2
+![Schematic sheet 2](Mcu%20sheet%202%20.png)
 
-![MCU Data Logger Schematic Sheet 2](./Mcu%20sheet%202%20.png)
+## PCB
 
----
+- Layers: 2-layer
+- Board size: [XX mm × XX mm]
+- Components: mostly SMD (0603/0805 passives, TQFP-32, SOIC-8), through-hole headers
+- Copper fills, silkscreen labelling for all connectors, DRC clean
 
-## 🔌 Main Interfaces
+![PCB layout](Layout%20Design.png)
 
-```text
-                         ┌──────────────────┐
-                         │      ESP32       │
-                         │ Main Controller  │
-                         └────────┬─────────┘
-                                  │
-              ┌───────────────────┼───────────────────┐
-              │                   │                   │
-             I²C                 UART                UART
-              │                   │                   │
-       ┌──────▼──────┐     ┌──────▼──────┐     ┌─────▼──────┐
-       │  24LC1025   │     │   NEO-6M    │     │  A7670C    │
-       │   EEPROM    │     │     GPS     │     │   4G LTE   │
-       └─────────────┘     └─────────────┘     └────────────┘
+## Repository Structure
+
+```
+.
+├── ATMEGA328P-AU/               # MCU symbol / footprint / 3D model files
+├── Footprints/                  # Custom footprint library
+├── Gerbers/                     # Manufacturing outputs (Gerber + drill files)
+├── symbols-downloaded/          # Downloaded symbol libraries
+├── Mcu - data logger.kicad_pro  # KiCad project file
+├── Mcu - data logger.kicad_sch  # Top-level schematic
+├── Connectors.kicad_sch         # Connectors sub-sheet
+├── Mcu - data logger.kicad_pcb  # PCB layout
+├── sym-lib-table                # Project symbol library table
+├── report.txt                   # Gerber/drill generation report
+├── 3D view.png
+├── Layout Design.png
+├── Mcu sheet 1.png
+├── Mcu sheet 2 .png
+└── README.md
 ```
 
-* **I²C** — EEPROM communication
-* **UART** — GPS communication
-* **UART** — 4G LTE communication
-* **GPIO** — Control and status signals
+## Getting Started
 
----
+1. Install [KiCad 10](https://www.kicad.org/download/).
+2. Clone the repo:
+```bash
+   git clone https://github.com/[your-username]/[repo-name].git
+```
+3. Open `Mcu - data logger.kicad_pro`.
+4. Run ERC on the schematic and DRC on the PCB.
+5. Gerbers are ready to upload to a fab house from the `Gerbers/` folder, or regenerate them via **File → Fabrication Outputs**.
 
-## 🖥️ PCB Design
+## Programming
 
-The project follows a complete **KiCad PCB design workflow**:
+Connect an AVR ISP programmer to **J4** (ICSP). Use the Arduino bootloader or flash directly with `avrdude`:
 
-```text
-Schematic
-    ↓
-Symbol & Footprint Assignment
-    ↓
-ERC
-    ↓
-PCB Layout
-    ↓
-Component Placement
-    ↓
-Net Classes & Design Rules
-    ↓
-Routing
-    ↓
-DRC
-    ↓
-Gerber Generation
+```bash
+avrdude -c usbasp -p m328p -U flash:w:firmware.hex
 ```
 
-### PCB Design Work
+## Tools
 
-* PCB layout
-* Component placement
-* Footprint management
-* Custom footprint integration
-* Track routing
-* Net Classes
-* Trace width and clearance configuration
-* Power and signal routing
-* Ground connections
-* ERC troubleshooting
-* DRC validation
+- KiCad 10.0.6
+- Git / GitHub for version control
 
----
+## License
 
-## 🛠️ Tools & Technologies
+[MIT / CERN-OHL-P / CC BY-SA 4.0 — choose one]
 
-### PCB Design
+## Author
 
-**KiCad 9**
-
-`Schematic Capture` • `PCB Layout` • `Footprint Management`
-`Component Placement` • `Routing` • `Net Classes`
-`Design Rules` • `ERC` • `DRC`
-
-### Electronics
-
-`ESP32` • `EEPROM` • `GPS` • `4G LTE`
-`UART` • `I²C` • `Voltage Regulation`
-`Power & Signal Routing`
-
-### Version Control
-
-`Git` • `GitHub`
-
----
-
-
-## 🎯 Skills Demonstrated
-
-`KiCad 9` `PCB Design` `Schematic Capture` `PCB Layout`
-`Footprints` `Component Placement` `Routing` `Net Classes`
-`ERC` `DRC` `UART` `I²C` `Power Supply Design` `Git` `GitHub`
-
----
-
-### 👨‍💻 Author
-
-**Siddharth Kote**
-
-Electronics & Communication Engineering Graduate
-
-Focused on **PCB Design, Electronics Hardware & KiCad Development**.
-
+[Your Name] — [LinkedIn / email]
 
