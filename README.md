@@ -73,34 +73,15 @@ Hierarchical design, split into functional blocks:
 └── README.md
 ```
 
-## Getting Started
-
-1. Install [KiCad 10](https://www.kicad.org/download/).
-2. Clone the repo:
-```bash
-   git clone https://github.com/[your-username]/[repo-name].git
-```
-3. Open `Mcu - data logger.kicad_pro`.
-4. Run ERC on the schematic and DRC on the PCB.
-5. Gerbers are ready to upload to a fab house from the `Gerbers/` folder, or regenerate them via **File → Fabrication Outputs**.
-
-## Programming
-
-Connect an AVR ISP programmer to **J4** (ICSP). Use the Arduino bootloader or flash directly with `avrdude`:
-
-```bash
-avrdude -c usbasp -p m328p -U flash:w:firmware.hex
-```
-
 ## Tools
 
 - KiCad 10.0.6
 - Git / GitHub for version control
 
-## License
+## Author
 
-[MIT / CERN-OHL-P / CC BY-SA 4.0 — choose one]
-
+**Siddharth Kote**
+siddharthkote129@gmail.com
 ## Author
 
 [Your Name] — [LinkedIn / email]
