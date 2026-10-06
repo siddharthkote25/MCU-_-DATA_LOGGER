@@ -1,1 +1,13 @@
-Change symbol U4 from 'ATMEGA328-AU:ATMEGA328P-AU' to 'ATMEGA328P-AU:ATMEGA328P-AU': OK
+Info: X scale constrained.
+Info: Y scale constrained.
+Plotted to 'D:\MCU-_-DATA_LOGGER-main\Gerbers\Mcu - data logger-F_Cu.gbr'.
+Plotted to 'D:\MCU-_-DATA_LOGGER-main\Gerbers\Mcu - data logger-B_Cu.gbr'.
+Plotted to 'D:\MCU-_-DATA_LOGGER-main\Gerbers\Mcu - data logger-F_Paste.gbr'.
+Plotted to 'D:\MCU-_-DATA_LOGGER-main\Gerbers\Mcu - data logger-B_Paste.gbr'.
+Plotted to 'D:\MCU-_-DATA_LOGGER-main\Gerbers\Mcu - data logger-F_Silkscreen.gbr'.
+Plotted to 'D:\MCU-_-DATA_LOGGER-main\Gerbers\Mcu - data logger-B_Silkscreen.gbr'.
+Plotted to 'D:\MCU-_-DATA_LOGGER-main\Gerbers\Mcu - data logger-F_Mask.gbr'.
+Plotted to 'D:\MCU-_-DATA_LOGGER-main\Gerbers\Mcu - data logger-B_Mask.gbr'.
+Plotted to 'D:\MCU-_-DATA_LOGGER-main\Gerbers\Mcu - data logger-Edge_Cuts.gbr'.
+Created Gerber job file 'D:\MCU-_-DATA_LOGGER-main\Gerbers\Mcu - data logger-job.gbrjob'.
+Info: Done.
