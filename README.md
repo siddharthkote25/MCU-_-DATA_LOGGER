@@ -1,4 +1,4 @@
-# ATmega328P Data Logger
+# Mcu Data Logger
 
 A compact, battery-backed data logger board built around the ATmega328P-AU. It has a real-time clock for timestamping and 2 Mbit of external I²C EEPROM for storage, and it breaks out I²C, UART, GPIO and ICSP headers for sensors and programming. Designed end-to-end in **KiCad 10**.
 
